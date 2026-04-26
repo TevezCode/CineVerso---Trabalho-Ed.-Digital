@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contato — CineVerso</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <header>
+    <div class="logo-wrap">
+      <span class="logo-icon">▶</span>
+      <span class="logo-text">CINE<span class="logo-accent">VERSO</span></span>
+    </div>
+    <nav>
+      <a href="index.html" class="nav-link">Filmes</a>
+      <a href="contato.html" class="nav-link active">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero-sub">Fale comigo</p>
+      <h1 class="hero-title">ENVIE SUA<br/><span class="hero-accent">MENSAGEM</span></h1>
+      <div class="hero-line"></div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-wrap">
+
+        <div class="contact-deco">
+          <div class="deco-quote">"</div>
+          <p class="deco-text">O cinema é um espelho que reflete a alma do mundo.</p>
+          <div class="deco-filmstrip">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="form-wrap">
+          <div id="success-msg" class="success-msg" style="display:none">
+            <span class="success-icon">✔</span>
+            <p>Mensagem enviada com sucesso!<br/><em>Em breve entrarei em contato.</em></p>
+          </div>
+
+          <form id="contactForm" action="https://formspree.io/f/mlgakeqy" method="POST" novalidate>
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem aqui..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">
+              <span class="btn-text">Enviar Mensagem</span>
+              <span class="btn-icon">→</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 CineVerso — Feito por Estevan Lopes</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CineVerso</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    /* Estilos do Popup (Modal) */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      backdrop-filter: blur(15px);
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+    .modal.show { display: flex; opacity: 1; }
+    .modal-content {
+      background: #111;
+      border: 1px solid #333;
+      width: 850px; /* Tamanho fixo horizontal */
+      height: 540px; /* Tamanho fixo vertical */
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      position: relative;
+      animation: modalSlide 0.4s ease-out;
+    }
+    @keyframes modalSlide { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .modal-close {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+      line-height: 1;
+    }
+    .modal-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-right: 1px solid #333;
+    }
+    .modal-info { padding: 40px; display: flex; flex-direction: column; justify-content: center; overflow-y: auto; }
+    .modal-meta { font-size: 0.9rem; color: var(--muted); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+    .modal-meta span { color: var(--red); font-weight: bold; }
+
+    .card { cursor: pointer; transition: transform 0.3s ease; }
+    .card:hover { transform: translateY(-10px); }
+    
+    @media (max-width: 768px) {
+      .modal-content { grid-template-columns: 1fr; width: 95%; height: auto; max-height: 90vh; }
+      .modal-img { height: 250px; border-right: none; border-bottom: 1px solid #333; }
+      .modal-info { padding: 25px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <header>
+    <div class="logo-wrap">
+      <span class="logo-icon">▶</span>
+      <span class="logo-text">CINE<span class="logo-accent">VERSO</span></span>
+    </div>
+    <nav>
+      <a href="index.html" class="nav-link active">Filmes</a>
+      <a href="contato.html" class="nav-link">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="hero-sub">Uma curadoria pessoal</p>
+      <h1 class="hero-title">MEUS FILMES<br/><span class="hero-accent">FAVORITOS</span></h1>
+      <div class="hero-line"></div>
+    </section>
+
+    <section class="cards-section">
+      <div class="cards-grid">
+
+        <div class="card" style="--delay:0s" data-duration="124 min" data-director="Shigeru Miyamoto">
+          <div class="card-number">01</div>
+          <div class="card-img-wrap">
+            <img src="https://image.tmdb.org/t/p/original/dQFwdkCpfc5UOdQigYKQm06VJS4.jpg" alt="Super Mario Galaxy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+            <div class="card-img-fallback" style="display:none">🌌</div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-genre">Aventura · Fantasia</span>
+            <h2 class="card-title">Super Mario Galaxy</h2>
+            <p class="card-desc">Uma jornada galáctica repleta de maravilhas, física impossível e pura alegria interplanetária.</p>
+            <div class="card-rating">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="card featured" style="--delay:0.15s" data-duration="112 min" data-director="Kenny Ortega">
+          <div class="card-number">02</div>
+          <div class="card-img-wrap">
+            <img src="https://www.mjworld.net/wp-content/uploads/Michael-official-poster.jpg" alt="Michael Jackson" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+            <div class="card-img-fallback" style="display:none">🎤</div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-genre">Documentário · Música</span>
+            <h2 class="card-title">Michael Jackson</h2>
+            <p class="card-desc">O legado inigualável do Rei do Pop eternizado nas telas, onde cada nota é uma obra de arte.</p>
+            <div class="card-rating">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="card" style="--delay:0.3s" data-duration="145 min" data-director="Christopher Nolan">
+          <div class="card-number">03</div>
+          <div class="card-img-wrap">
+            <img src="https://coletivonerd.com.br/wp-content/uploads/2025/06/devoradores-de-estrelas-cartaz-coletivo-nerd-768x960.jpg" alt="Devoradores de Estrelas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"/>
+            <div class="card-img-fallback" style="display:none">⭐</div>
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-info">
+            <span class="card-genre">Ficção Científica · Drama</span>
+            <h2 class="card-title">Devoradores de Estrelas</h2>
+            <p class="card-desc">Uma narrativa cósmica e perturbadora que questiona os limites do universo e da humanidade.</p>
+            <div class="card-rating">★★★★★</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 CineVerso — Feito por Estevan Lopes</p>
+  </footer>
+
+  <!-- Estrutura do Popup -->
+  <div id="movieModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <img id="modalImg" class="modal-img" src="" alt="Poster do Filme">
+      <div class="modal-info">
+        <span id="modalGenre" class="card-genre"></span>
+        <div class="modal-meta">
+          <span id="modalDuration"></span> | 
+          Diretor: <span id="modalDirector"></span>
+        </div>
+        <h2 id="modalTitle" class="hero-title" style="font-size: 3rem; margin: 10px 0;"></h2>
+        <p id="modalDesc" class="card-desc" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;"></p>
+        <div id="modalRating" class="card-rating" style="font-size: 1.5rem;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
